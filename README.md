@@ -16,9 +16,11 @@ MglJS 组件是基于开源的第三方的组件，仅仅的进行模块化以�
 
 模块化就很多的解决了这个问题，所有的前端人员去实现相同的功能时，他们只需要知道怎么添加功能所需的参数就行，无需去了解组件背后的代码。即使后续觉得组件无法再满足项目需求了，也只是修改组件，不影响前端人员的使用。
 
-# 安装说明
+# 文档
 
-* 下载安装包 [http://www.kancloud.cn/a546392706/mgljs?token=w5Tz4yJqCuxM](http://www.kancloud.cn/a546392706/mgljs?token=w5Tz4yJqCuxM)
+查看文档 [http://doc.uizph.com](http://doc.uizph.com)
+
+# 安装说明
 
 * 将mgljs文件夹放入项目
 
