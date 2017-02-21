@@ -18,11 +18,13 @@ MglJS 组件是基于开源的第三方的组件，仅仅的进行模块化以�
 
 # 安装说明
 
-* 下载安装包，将mgljs文件夹放入项目
+* 下载安装包 [http://www.kancloud.cn/a546392706/mgljs?token=w5Tz4yJqCuxM](http://www.kancloud.cn/a546392706/mgljs?token=w5Tz4yJqCuxM)
+
+* 将mgljs文件夹放入项目
 
 * 在<head>标签中引入js
 
-# 引入
+## 引入
 
 ~~~
 <html>
