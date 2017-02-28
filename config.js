@@ -6,19 +6,19 @@
  */
 
 var mgljs = {
-    'base': '/mgljs',  //框架js根目录
-    'lib': '../lib/',  //框架三方库目录
-    'css': '../css/'   //框架依赖css目录
+    'base': './mgljs',  //框架js根目录
+    'lib': './lib/',  //框架三方库目录
+    'css': '../mgljs/css/'   //框架依赖css目录
 };
 
 require.config({
-    baseUrl: mgljs.base + '/app',
+    baseUrl: mgljs.base,
     paths: {
         'jquery': [mgljs.lib + 'jquery.min', 'http//libs.baidu.com/jquery/2.1.4/jquery.min.js'],
         'css': mgljs.lib + 'css.min',
-        'util': 'util',
+        'util': './app/util',
         //上传
-        'uploadFile': 'uploadFile',
+        'uploadFile': './app/uploadFile',
         //日期选择器
         'datepicker': mgljs.lib + 'datepicker.min',
         //slide切换
