@@ -18,11 +18,11 @@ define(["jquery", "jqFiler"], function($, filer) {
                         <div class="jFiler-item-container">\
                             <div class="jFiler-item-inner">\
                                 <div class="jFiler-item-thumb">\
+                                    <div class="jFiler-item-del"><a class="icon-remove jFiler-item-trash-action"></a></div>\
                                     <div class="jFiler-item-status"></div>\
                                     <div class="jFiler-item-thumb-overlay">\
                                         <div class="jFiler-item-info">\
                                             <div style="display:table-cell;vertical-align: middle;">\
-                                                <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
                                                 <span class="jFiler-item-others">{{fi-size2}}</span>\
                                             </div>\
                                         </div>\
@@ -32,9 +32,6 @@ define(["jquery", "jqFiler"], function($, filer) {
                                 <div class="jFiler-item-assets jFiler-row">\
                                     <ul class="list-inline pull-left">\
                                         <li>{{fi-progressBar}}</li>\
-                                    </ul>\
-                                    <ul class="list-inline pull-right">\
-                                        <li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
                                     </ul>\
                                 </div>\
                             </div>\
@@ -48,7 +45,6 @@ define(["jquery", "jqFiler"], function($, filer) {
                                         <div class="jFiler-item-thumb-overlay">\
                                             <div class="jFiler-item-info">\
                                                 <div style="display:table-cell;vertical-align: middle;">\
-                                                    <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
                                                     <span class="jFiler-item-others">{{fi-size2}}</span>\
                                                 </div>\
                                             </div>\
@@ -79,19 +75,15 @@ define(["jquery", "jqFiler"], function($, filer) {
                     beforeSend: function() {},
                     success: function(data, itemEl, listEl, boxEl, newInputEl, inputEl, id) {
                         var parent = itemEl.find(".jFiler-jProgressBar").parent(),
-                            new_file_name = JSON.parse(data),
                             filerKit = inputEl.prop("jFiler");
-
-                        filerKit.files_list[id].name = new_file_name;
-
                         itemEl.find(".jFiler-jProgressBar").fadeOut("slow", function() {
-                            $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> 成功</div>").hide().appendTo(parent).fadeIn("slow");
+                            $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-wancheng\"></i>上传成功<input type='hidden' value='" + data.adr + "' name='crmContactCard.contactNameCard'></div>").hide().appendTo(parent).fadeIn("slow");
                         });
                     },
                     error: function(el) {
                         var parent = el.find(".jFiler-jProgressBar").parent();
                         el.find(".jFiler-jProgressBar").fadeOut("slow", function() {
-                            $("<div class=\"jFiler-item-others text-error\"><i class=\"icon-jfi-minus-circle\"></i> 失败</div>").hide().appendTo(parent).fadeIn("slow");
+                            $("<div class=\"jFiler-item-others text-error\"><i class=\"icon-guanbi2\"></i>上传失败</div>").hide().appendTo(parent).fadeIn("slow");
                         });
                     }
                 },

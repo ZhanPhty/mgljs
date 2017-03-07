@@ -35,13 +35,14 @@ require.config({
         'cityJSON': mgljs.lib + 'cityJSON',
         'city': mgljs.lib + 'distpicker',
         //validate表单验证
-        'validate': mgljs.lib + 'jquery.validate.min',
+        'validate': mgljs.lib + 'jquery.validate',
         //富文本
         'editor': mgljs.lib + 'trumbowyg.min',
         //cookie操作
         'cookie': mgljs.lib + 'js.cookie',
         //Dom加载
-        'domReady': mgljs.lib + 'domReady'
+        'domReady': mgljs.lib + 'domReady',
+        'numInput':  mgljs.lib + 'numInput'
     },
     shim: {
         'jquery': {
@@ -88,6 +89,9 @@ require.config({
         },
         'cookie': {
             exports: 'cookie'
+        },
+        'numInput': {
+            deps: ['jquery']
         }
     }
 });

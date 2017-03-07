@@ -134,12 +134,12 @@
                 addMore: true,
                 allowDuplicates: false,
                 uploadFile: {
-                    url: ""
+                    url: ''
                 }
             }, options);
 
             require(['uploadFile'], function(uploadFile) {
-                switch(opts.type) {
+                switch (opts.type) {
                     case 'image':
                         uploadFile.image(opts);
                         break;
@@ -150,6 +150,10 @@
                         uploadFile.file(opts);
                 }
             })
+        },
+        //上传图片
+        uploadify: function(options) {
+
         },
         //dialog弹窗
         dialog: function(options) {
@@ -232,6 +236,31 @@
             })
         },
         //城市联动
+        formValid: function(options) {
+            var opts = $.extend({
+                selector: '.select-form',
+                changeReset: '.select-control',
+                errorPlacement: function(error, element) {
+                    if (element.is(':checkbox') || element.is(':radio')) {
+                        error.appendTo(element.parent().parent().parent());
+                    } else {
+                        error.appendTo(element.parent());
+                    }
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            }, options);
+
+            require(['validate'], function() {
+                $(opts.changeReset).change(function() {
+                    $(this).valid();
+                });
+
+                $(opts.selector).validate(opts);
+            });
+        },
+        //城市联动
         city: function(options) {
             var opts = $.extend({
                 selector: '.distpicker',
@@ -298,14 +327,14 @@
             //获取当前URL
             var local_url = document.location.href;
             //获取要取得的get参数位置
-            var get = local_url.indexOf(par + "=");
+            var get = local_url.indexOf(par + '=');
             if (get == -1) {
                 return false;
             }
             //截取字符串
             var get_par = local_url.slice(par.length + get + 1);
             //判断截取后的字符串是否还有其他get参数
-            var nextPar = get_par.indexOf("&");
+            var nextPar = get_par.indexOf('&');
             if (nextPar != -1) {
                 get_par = get_par.slice(0, nextPar);
             }
@@ -331,13 +360,37 @@
                 case 'tel':
                     return /(?:\(\d{3,4}\)|\d{3,4}-?)\d{8}/.test(val);
                 case 'phone':
-                    return /^\d{11}$/.test(val);
+                    return /^1[3|4|5|7|8][0-9]\d{8}$/.test(val);
                 case 'id':
                     return /^(\d{15}|\d{18})$/.test(val);
             }
+        },
+        inputFormat: function(options) {
+            var opts = $.extend({
+                selector: '.input',
+                type: 'tel'
+            }, options);
+
+            require(['numInput'], function(){
+                switch(opts.type) {
+                    case 'tel':
+                        $(opts.selector).telInput(opts);
+                        break;
+                    case 'num':
+                        $(opts.selector).numInput(opts)
+                        break;
+                    case 'numList':
+                        $(opts.selector).numList(opts)
+                        break;
+                    case 'idNo':
+                        $(opts.selector).idInput(opts)
+                        break;
+                }
+                
+            })
         }
     };
-    if (typeof define === "function" && define.amd) {
+    if (typeof define === 'function' && define.amd) {
         define(function() {
             return util;
         });
