@@ -9,7 +9,7 @@ define(["jquery", "jqFiler"], function($, filer) {
     var obj = {
         image: function(options) {
             var opts = $.extend({
-                extensions: ['jpg', 'png', 'gif', 'bmp'],
+                extensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp'],
                 changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>拖放文件在这里</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn blue">选择文件</a></div></div>',
                 theme: "dragdropbox",
                 templates: {

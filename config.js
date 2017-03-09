@@ -27,6 +27,8 @@ require.config({
         'imagesGrid': mgljs.lib + 'images.grid',
         //上传文件
         'jqFiler': mgljs.lib + 'jquery.filer',
+        //兼容ie8的文件上传
+        'uploadify': mgljs.lib + 'jquery.uploadify.min',
         //消息提示
         'dialog': mgljs.lib + 'dialog',
         //select多选
@@ -42,7 +44,10 @@ require.config({
         'cookie': mgljs.lib + 'js.cookie',
         //Dom加载
         'domReady': mgljs.lib + 'domReady',
-        'numInput':  mgljs.lib + 'numInput'
+        //输入格式化
+        'inputformat':  mgljs.lib + 'cleave',
+        //拖动滑块
+        'drag':  mgljs.lib + 'drag'
     },
     shim: {
         'jquery': {
@@ -68,6 +73,9 @@ require.config({
             exports: 'jqFiler',
             deps: ['jquery', 'css!'+ mgljs.css +'jquery.filer.css']
         },
+        'uploadify': {
+            deps: ['jquery', 'css!'+ mgljs.css +'uploadify.css']
+        },
         'dialog': {
             exports: 'dialog',
             deps: ['jquery', 'css!'+ mgljs.css +'ui-dialog.css']
@@ -90,7 +98,7 @@ require.config({
         'cookie': {
             exports: 'cookie'
         },
-        'numInput': {
+        'drag': {
             deps: ['jquery']
         }
     }

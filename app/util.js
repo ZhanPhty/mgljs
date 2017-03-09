@@ -151,10 +151,6 @@
                 }
             })
         },
-        //上传图片
-        uploadify: function(options) {
-
-        },
         //dialog弹窗
         dialog: function(options) {
             var opts = $.extend({
@@ -366,27 +362,57 @@
             }
         },
         inputFormat: function(options) {
+            var typeOpts;
             var opts = $.extend({
                 selector: '.input',
-                type: 'tel'
+                type: ''
             }, options);
 
-            require(['numInput'], function(){
-                switch(opts.type) {
+            require(['inputformat'], function() {
+                switch (opts.type) {
                     case 'tel':
-                        $(opts.selector).telInput(opts);
+                        typeOpts = {
+                            blocks: [3, 4, 4],
+                            numericOnly: true,
+                            delimiter: ' '
+                        };
                         break;
-                    case 'num':
-                        $(opts.selector).numInput(opts)
-                        break;
-                    case 'numList':
-                        $(opts.selector).numList(opts)
+                    case 'bank':
+                        typeOpts = {
+                            creditCard: true,
+                            delimiter: ' '
+                        };
                         break;
                     case 'idNo':
-                        $(opts.selector).idInput(opts)
+                        typeOpts = {
+                            blocks: [3, 3, 8, 4],
+                            delimiter: ' '
+                        };
                         break;
+                    case 'date':
+                        typeOpts = {
+                            date: true,
+                            datePattern: ['Y', 'm', 'd'],
+                            delimiter: '-'
+                        };
+                        break;
+                    default:
+                        var typeOpts = opts;
                 }
-                
+
+                var cleave = new Cleave(opts.selector, typeOpts);
+            })
+        },
+        dragValid: function(options) {
+            var opts = $.extend({
+                selector: '#dragValid',
+                dragText: '按住滑块，拖动到最右边',
+                dragSucces: '验证通过',
+                inputName: 'dragVaild'
+            }, options);
+
+            require(['drag'], function() {
+                $(opts.selector).drag(opts);
             })
         }
     };
