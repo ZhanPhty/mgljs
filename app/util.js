@@ -414,6 +414,29 @@
             require(['drag'], function() {
                 $(opts.selector).drag(opts);
             })
+        },
+        placeholder: function(options) {
+            var opts = $.extend({
+                selector: 'input, textarea',
+                submitSelector: 'input:submit, button:submit, .btn-control'
+            }, options);
+            //判断是不是ie
+            if (navigator.appName == "Microsoft Internet Explorer") {
+                require(['placeholder'], function() {
+                    $(opts.selector).placeholder();
+
+                    //使用jquery.validate验证是input：password不起作用，点击提交按钮添加的主动name
+                    $(opts.submitSelector).click(function() {
+                        var inputEl = $('body').find('input:password');
+                        $(inputEl).each(function(index, value) {
+                            var inputName = $(value).attr('name');
+                            if (inputName != null) {
+                                $(value).prev('input.placeholder').attr('name', inputName);
+                            }
+                        });
+                    });
+                })
+            }
         }
     };
     if (typeof define === 'function' && define.amd) {

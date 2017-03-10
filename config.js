@@ -5,10 +5,14 @@
  * @author 詹小灰@461632311
  */
 
+var localObj = window.location;
+var contextPath = localObj.pathname.split("/")[1];
+var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
 var mgljs = {
-    'base': './mgljs',  //框架js根目录
-    'lib': './lib/',  //框架三方库目录
-    'css': '../mgljs/css/'   //框架依赖css目录
+    base : basePath+"/mgljs",
+    lib : "./lib/",
+    css : "../mgljs/css/"
 };
 
 require.config({
@@ -47,7 +51,9 @@ require.config({
         //输入格式化
         'inputformat':  mgljs.lib + 'cleave',
         //拖动滑块
-        'drag':  mgljs.lib + 'drag'
+        'drag':  mgljs.lib + 'drag',
+        //兼容ie8的placeholder属性
+        'placeholder':  mgljs.lib + 'jquery.placeholder'
     },
     shim: {
         'jquery': {
@@ -99,6 +105,9 @@ require.config({
             exports: 'cookie'
         },
         'drag': {
+            deps: ['jquery']
+        },
+        'placeholder': {
             deps: ['jquery']
         }
     }
