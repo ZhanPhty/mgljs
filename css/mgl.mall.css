@@ -1,0 +1,265 @@
+/**
+ * Copyright (c) 2017 Cofey
+ * @description gulp Bulid Project (http://www.uizph.com) by：ZhanPhty
+ * @version 1.0.5
+ * @link http://www.uizph.com
+ * @license MIT
+ **/
+
+@charset "UTF-8";
+.selectNumberScreen {
+    width: 100%;
+    margin: 0 auto
+}
+
+.screenBox dl {
+    border-bottom: #e6e6e6 1px dashed;
+    width: 100%;
+    height: 44px;
+    overflow: hidden
+}
+
+.screenBox dl.open {
+    height: auto;
+    overflow: hidden
+}
+
+.screenBox dl:after,
+.screenBox dl:before {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.screenBox dl dt {
+    display: inline-block;
+    text-align: left;
+    float: left;
+    margin-right: 10px;
+    font-weight: 700
+}
+
+.screenBox dl dd {
+    display: inline-block;
+    position: relative;
+    max-width: 88%;
+    margin-top: 6px;
+    margin-bottom: 6px
+}
+
+.screenBox dl dd a {
+    line-height: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    color: #333;
+    text-decoration: none
+}
+
+.screenBox dl dd a.selected,
+.screenBox dl dd a:hover {
+    color: #f40
+}
+
+.screenBox dl dd.more {
+    float: right;
+    line-height: 32px;
+    padding-left: 8px;
+    padding-right: 6px;
+    color: #f40;
+    cursor: pointer
+}
+
+.screenBox dl .customRange {
+    margin-left: 24px
+}
+
+.screenBox dl .customRange label {
+    color: #868686
+}
+
+.screenBox dl .customRange input[type=text] {
+    border: 1px solid #eaeaea;
+    width: 70px;
+    padding: 5px 5px 3px;
+    margin-top: -6px;
+    margin-left: 4px;
+    margin-right: 4px
+}
+
+.screenBox dl .customRange .btn-cut-range {
+    border: 1px solid #0a7feb;
+    color: #0a7feb;
+    background-color: #fff;
+    padding: 2px 8px;
+    margin-top: -5px
+}
+
+.screenBox .listOther {
+    height: 43px;
+    margin-top: -5px
+}
+
+.screenBox .listOther li {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    line-height: 44px;
+    min-width: 80px;
+    padding: 0 14px;
+    cursor: pointer;
+    text-align: center;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAALUlEQVR42mJccuwFAw5Qz4RLAogbmHBJgBhMuCTQJVEkkCUxJGCSWCVAACDAAC52CNnxGJV+AAAAAElFTkSuQmCC) no-repeat bottom right;
+    margin-right: -1px
+}
+
+.screenBox .listOther li.hover {
+    background: #fbfcfc;
+    border-top: 1px solid #a0c5e9;
+    border-left: 1px solid #a0c5e9;
+    border-right: 1px solid #a0c5e9;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    z-index: 120;
+    margin-top: -1px
+}
+
+.screenBox .listHidden {
+    display: none;
+    height: auto;
+    overflow: visible;
+    max-width: 1200px;
+    min-width: 980px;
+    position: absolute;
+    background: #fbfcfc;
+    padding: 0 14px;
+    border: 1px solid #a0c5e9;
+    margin-top: -2px;
+    z-index: 99
+}
+
+.screenBox .listHidden dt {
+    display: none;
+    max-width: 100%
+}
+
+.screenBox dl dt {
+    line-height: 44px;
+    height: 44px
+}
+
+.hasBeenSelected {
+    line-height: 44px;
+    min-height: 44px;
+}
+
+.hasBeenSelected,
+.hasBeenSelected dl {
+    width: 100%;
+}
+
+.hasBeenSelected dl dt {
+    float: left;
+    margin-right: 8px
+}
+
+.hasBeenSelected dl dd {
+    float: left;
+    width: 80%
+}
+
+.hasBeenSelected .eliminateCriteria,
+.selectedInfor {
+    position: relative;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 6px;
+    margin: 10px 8px 4px 0;
+    float: left
+}
+
+.hasBeenSelected .eliminateCriteria {
+    cursor: pointer;
+    border: 1px solid #0a7feb;
+    padding-right: 6px;
+    color: #0a7feb
+}
+
+.selectedInfor {
+    white-space: nowrap;
+    padding-right: 22px;
+    background-color: #0a7feb;
+    color: #fff
+}
+
+.selectedInfor .clearBtn {
+    cursor: pointer;
+    display: block;
+    height: 18px;
+    width: 16px;
+    overflow: hidden;
+    position: absolute;
+    right: 2px;
+    top: 3px
+}
+
+.selectedInfor .clearBtn:after {
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAQAAADY4iz3AAAAr0lEQVQY03XQTUoDYRCE4QIVnCsZcw5/Qq4iIsJEcRnGSDaJoMnBTByPMAh5XMwX4kLpTVNNdXe9EREDKx86GyvDXos4MkVraWKhReOkH73gUVX8lQc7c4kzPBV5XxOcx5svlbhzLcZuxKlP69h6FTHSmelciJjbBHVZM0NT+nvfB9dYp9G5OrjetSpx61KMyq2tdQz++LDGMGKK+leu2k7TRz4uNBbqQuN5T+Mfhj/LG+onJjuNeAAAAABJRU5ErkJggg==);
+    position: relative;
+    top: -1px;
+    left: 1px
+}
+
+
+.explain-box {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  z-index: 500;
+  width: 210px;
+  padding: 8px 12px;
+  height: 66px;
+  margin-top: -10px;
+  -webkit-box-shadow: 0 1px 2px rgba(118, 118, 118, 0.3);
+          box-shadow: 0 1px 2px rgba(118, 118, 118, 0.3);
+}
+
+.explain-box:before {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAYAAAA/33wPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA25pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiZGE0MWNmMC0yYTEwLTNlNDYtYTJjNS1lYTlhNzc3ODNlMDYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEVBNzhCMTUwOUUwMTFFNzk5NDRDQTAwOUUyNzkwN0MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEVBNzhCMTQwOUUwMTFFNzk5NDRDQTAwOUUyNzkwN0MiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDFBMUQyODIyRUJEMTFFNTkzNjJBRjFCNjA1QzQyQUYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDFBMUQyODMyRUJEMTFFNTkzNjJBRjFCNjA1QzQyQUYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz42WFwMAAAA6UlEQVR42qzQsQqCUBQG4HsDSRwkcHEwX0AfosbaWmrsFQJfox6isaWx1h7iirs5uFgXUTAcbv8JDIJEgw5cztF7/g+UK6VYW4VhyNG2ONQDz/Nal3kbBGSItjcMY8U5Z2VZHvC8BvboDQEZoR1N05w6jvN6lyQJy/P8gnEBTHZCQCh5tizLt2374y5NU5ZlmcA4A5a0QkB8tBOAMaCvnwyIwCvGOTDxviCIjhBiAugmpVRdRTvYvVOmyTfIMoqiqigK1bdolzKUJYNj2GiatnNdd6DrOvulqqpicRyruq4D+keK/aGeAgwANBDUzXyPITEAAAAASUVORK5CYII=);
+  position: absolute;
+  line-height: 1;
+  top: -11px;
+  width: 100%;
+  padding-left: 6px;
+  left: 0;
+}
+
+.explain-align {
+    width: auto;
+    height: auto;
+    max-width: 280px;
+    margin-top: 6px;
+}
+
+.explain-box .explain-box-txt {
+  line-height: 23px;
+}
+
+.explain-box .explain-box-txt li {
+  display: inline-block;
+}
+
+.explain-box .explain-box-num {
+  line-height: 23px;
+}
+
+.explain-box .explain-box-num li {
+  display: inline-block;
+  color: #ff4400;
+  min-width: 58px;
+}

@@ -107,7 +107,7 @@
                     //得到当前索引
                     var i = $(this).index();
                     $(opts.tabNavClass).find('li').removeClass('active').eq(i).addClass('active');
-                    tabSwiper.slideTo(i, opts.speed, false);
+                    tabSwiper.swipeTo(i, opts.speed, false);
                 });
             });
         },
@@ -154,16 +154,12 @@
         //dialog弹窗
         dialog: function(options) {
             var opts = $.extend({
-                title: '提示',
+                selector: '',
                 content: '世界，你好！',
                 contentDom: '',
                 modal: true,
                 width: 440,
-                skin: 'crm-form',
-                okValue: '确定',
-                ok: function() {},
-                cancelValue: '取消',
-                cancel: function() {}
+                skin: 'crm-form'
             }, options);
 
             if (opts.contentDom != '') {
@@ -172,8 +168,16 @@
             }
 
             require(['dialog'], function() {
-                var dialogMsg = dialog(opts);
-                dialogMsg.show();
+                var dialogMsg;
+                if (opts.selector != '') {
+                    $(opts.selector).click(function(){
+                        dialogMsg = dialog(opts);
+                        dialogMsg.show();
+                    });
+                } else {
+                    dialogMsg = dialog(opts);
+                    dialogMsg.show();
+                }
             });
         },
         //tip提示
@@ -405,15 +409,23 @@
         },
         dragValid: function(options) {
             var opts = $.extend({
-                selector: '#dragValid',
-                dragText: '按住滑块，拖动到最右边',
-                dragSucces: '验证通过',
-                inputName: 'dragVaild'
+                selector: '.slideunlock-slider',
+                labelTip: '按住滑块，拖动到最右边',
+                successLabelTip: '验证通过',
+                duration: 200,
+                success: function(){
+                    var $this = $(this);
+                    var slider = $this[0].elm.find('.slideunlock-label');
+                    slider.off('mousedown');
+                    $this[0].elm.nextAll('.error').hide();
+                },
+                always: function(){}
             }, options);
 
             require(['drag'], function() {
-                $(opts.selector).drag(opts);
-            })
+                var slider = new SliderUnlock(opts.selector, opts, opts.success, opts.always);
+                slider.init();
+            });
         },
         placeholder: function(options) {
             var opts = $.extend({
@@ -437,6 +449,49 @@
                     });
                 })
             }
+        },
+        listSort: function(options){
+            var opts = $.extend({
+                selector: '.list-sort',
+                includeAll: true,
+                allText: '全部',
+                includeOther: false,
+                removeDisabled: false,
+                noMatchText: '没有数据',
+                showCounts: false
+            }, options);
+
+            require(['listnav'], function() {
+                $(opts.selector).listnav(opts);
+            });
+        },
+        searchList: function(options){
+            var opts = $.extend({
+                selector: '.selectNumberScreen'
+            }, options);
+
+            require(['mallList'], function(){
+                $(opts.selector).selectedList(opts);
+            });
+        },
+        hoverExplain: function(options){
+            var opts = $.extend({
+                selector: '.order-pirce'
+            }, options);
+
+            require(['mallList'], function(){
+                $(opts.selector).hoverPop(opts);
+            });
+        },
+        checkAll: function(options){
+            var opts = $.extend({
+                itemBoxClass: '.check-items',
+                checkAllClass: '.check-all'
+            }, options);
+
+            require(['mallList'], function(){
+                $(opts.itemBoxClass).checkAll(opts);
+            });
         }
     };
     if (typeof define === 'function' && define.amd) {

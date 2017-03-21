@@ -5,12 +5,18 @@
  * @author 詹小灰@461632311
  */
 
-var localObj = window.location;
-var contextPath = localObj.pathname.split("/")[1];
-var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+// var localObj = window.location;
+// var contextPath = localObj.pathname.split("/")[1];
+// var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
+// var mgljs = {
+//     base : basePath+"/mgljs",
+//     lib : "./lib/",
+//     css : "../mgljs/css/"
+// };
 
 var mgljs = {
-    base : basePath+"/mgljs",
+    base : "./mgljs",
     lib : "./lib/",
     css : "../mgljs/css/"
 };
@@ -51,9 +57,15 @@ require.config({
         //输入格式化
         'inputformat':  mgljs.lib + 'cleave',
         //拖动滑块
-        'drag':  mgljs.lib + 'drag',
+        'drag':  mgljs.lib + 'jquery.slideunlock',
         //兼容ie8的placeholder属性
-        'placeholder':  mgljs.lib + 'jquery.placeholder'
+        'placeholder':  mgljs.lib + 'jquery.placeholder',
+        //中文转换成英文首字母
+        'charfirst':  mgljs.lib + 'jquery.charfirst',
+        //按字母排序筛选
+        'listnav':  mgljs.lib + 'jquery.listnav',
+        //列表筛选条件选择
+        'mallList':  mgljs.lib + 'mgl.mall'
     },
     shim: {
         'jquery': {
@@ -109,6 +121,12 @@ require.config({
         },
         'placeholder': {
             deps: ['jquery']
+        },
+        'listnav': {
+            deps: ['jquery', 'charfirst']
+        },
+        'mallList': {
+            deps: ['jquery', 'css!'+ mgljs.css +'mgl.mall.css']
         }
     }
 });
