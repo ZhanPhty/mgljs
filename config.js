@@ -65,7 +65,9 @@ require.config({
         //按字母排序筛选
         'listnav':  mgljs.lib + 'jquery.listnav',
         //列表筛选条件选择
-        'mallList':  mgljs.lib + 'mgl.mall'
+        'mallList':  mgljs.lib + 'mgl.mall',
+        //根据div打印页面
+        'jqprint':  mgljs.lib + 'jquery.jqprint'
     },
     shim: {
         'jquery': {
@@ -127,6 +129,10 @@ require.config({
         },
         'mallList': {
             deps: ['jquery', 'css!'+ mgljs.css +'mgl.mall.css']
+        },
+        'jqprint': {
+            exports: '',
+            deps: ['jquery']
         }
     }
 });

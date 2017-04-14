@@ -465,6 +465,26 @@
                 $(opts.selector).listnav(opts);
             });
         },
+        print: function(options){
+            var opts = $.extend({
+                selector: '',
+                printDom: '.print-select',
+                debug: false,
+                importCSS: true, 
+                printContainer: true,
+                operaSupport: true
+            }, options);
+
+            require(['jqprint'], function() {
+                if (opts.selector != '') {
+                    $(opts.selector).click(function(){
+                        $(opts.printDom).jqprint(opts);
+                    });
+                } else {
+                    $(opts.printDom).jqprint(opts);
+                }
+            });
+        },
         searchList: function(options){
             var opts = $.extend({
                 selector: '.selectNumberScreen'
