@@ -148,7 +148,7 @@
 
         /**
          * [图片列表预览]
-         * @param  {[selector]      [绑定选择器]
+         * @param  {[selector]}     [绑定选择器]
          * @param  {[cells]}        [只展图片示个数]
          * @param  {[align]}        [显示预览]
          * @param  {[nextOnClick]}  [点击下一张]
@@ -172,7 +172,7 @@
 
         /**
          * [文件上传]
-         * @param  {[selector]      [绑定选择器]
+         * @param  {[selector]}     [绑定选择器]
          * @param  {[type]}         [上传类型]
          * @param  {[showThumbs]}   [显示缩略图]
          * @param  {[addMore]}      [选择多张]
@@ -204,7 +204,7 @@
 
         /**
          * [dialog弹窗]
-         * @param  {[selector]      [绑定选择器]
+         * @param  {[selector]}     [绑定选择器]
          * @param  {[contentDom]}   [获取html内容]
          * @param  {[modal]}        [是否模态显示]
          * @return {[opts]}
@@ -240,7 +240,7 @@
 
         /**
          * [tip提示]
-         * @param  {[content]      [内容]
+         * @param  {[content]}     [内容]
          * @param  {[stayTime]}    [自动关闭时间]
          * @param  {[appendTo]}    [设置父级DOM]
          * @return {[opts]}
