@@ -10,7 +10,15 @@
 
 (function(window) {
     var util = {
-        //datepicker日期选择
+        
+        /**
+         * [datepicker日期选择]
+         * @param  {[dateRange]} [是否为日期区间]
+         * @param  {[selector]}  [绑定Input选择器]
+         * @param  {[showToday]} [是否显示今天的角标样式]
+         * @return {[opts]}
+         */
+        
         datePicker: function(options) {
             var opts = $.extend({
                 dateRange: false,
@@ -22,7 +30,8 @@
                 rightArrow: '>',
                 closeIcon: '×',
                 closeButton: false,
-                language: 'zh-CN'
+                language: 'zh-CN',
+                render: false
             }, options);
             var nowTemp = new Date();
             var dateNow = new Date();
@@ -33,6 +42,14 @@
                     dateNow = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
                     //当前日期加标记
                     return dateNow.valueOf() == now.valueOf() ? 'current' : '';
+                }
+            }
+
+            if (opts.onRender) {
+                opts.onRender = function(date) {
+                    dateNow = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
+                    //当前日期加标记
+                    return dateNow.valueOf() < now.valueOf() ? 'disabled' : '';
                 }
             }
 
@@ -74,7 +91,16 @@
                 }).data('datepicker');
             }
         },
-        //swiper图片切换
+
+        /**
+         * [swiper图片切换]
+         * @param  {[containerClass]}      [最外层容器]
+         * @param  {[direction]}           [显示方向]
+         * @param  {[pagination]}          [分页器]
+         * @param  {[paginationClickable]} [分页器是否可点击]
+         * @return {[opts]}
+         */
+        
         swiper: function(options) {
             require(['swiper'], function() {
                 var opts = $.extend({
@@ -87,7 +113,15 @@
                 var mySwiper = new Swiper(opts.containerClass, opts)
             })
         },
-        //swiper的tab功能切换
+
+        /**
+         * [swiper的tab功能切换]
+         * @param  {[speed]}            [切换速度]
+         * @param  {[tabNavClass]}      [tab菜单选择器]
+         * @param  {[pagination]}       [内容选择器]
+         * @return {[opts]}
+         */
+        
         swiperTab: function(options) {
             require(['swiper'], function() {
                 var opts = $.extend({
@@ -111,7 +145,17 @@
                 });
             });
         },
-        //swiper图片切换
+
+        /**
+         * [图片列表预览]
+         * @param  {[selector]      [绑定选择器]
+         * @param  {[cells]}        [只展图片示个数]
+         * @param  {[align]}        [显示预览]
+         * @param  {[nextOnClick]}  [点击下一张]
+         * @param  {[bgClose]}      [点击背景关闭]
+         * @return {[opts]}
+         */
+        
         imagesGrid: function(options) {
             var opts = $.extend({
                 selector: '.images-grid',
@@ -125,17 +169,23 @@
                 $(opts.selector).imagesGrid(opts);
             })
         },
-        //文件上传
+
+        /**
+         * [文件上传]
+         * @param  {[selector]      [绑定选择器]
+         * @param  {[type]}         [上传类型]
+         * @param  {[showThumbs]}   [显示缩略图]
+         * @param  {[addMore]}      [选择多张]
+         * @return {[opts]}
+         */
+        
         uploadFile: function(options) {
             var opts = $.extend({
                 selector: '#filerUpdate',
                 type: 'file',
                 showThumbs: true,
                 addMore: true,
-                allowDuplicates: false,
-                uploadFile: {
-                    url: ''
-                }
+                allowDuplicates: false
             }, options);
 
             require(['uploadFile'], function(uploadFile) {
@@ -151,15 +201,22 @@
                 }
             })
         },
-        //dialog弹窗
+
+        /**
+         * [dialog弹窗]
+         * @param  {[selector]      [绑定选择器]
+         * @param  {[contentDom]}   [获取html内容]
+         * @param  {[modal]}        [是否模态显示]
+         * @return {[opts]}
+         */
+        
         dialog: function(options) {
             var opts = $.extend({
                 selector: '',
-                content: '世界，你好！',
                 contentDom: '',
                 modal: true,
                 width: 440,
-                skin: 'crm-form'
+                skin: 'mgl-mall'
             }, options);
 
             if (opts.contentDom != '') {
@@ -180,7 +237,15 @@
                 }
             });
         },
-        //tip提示
+
+        /**
+         * [tip提示]
+         * @param  {[content]      [内容]
+         * @param  {[stayTime]}    [自动关闭时间]
+         * @param  {[appendTo]}    [设置父级DOM]
+         * @return {[opts]}
+         */
+        
         promptMsg: function(options) {
             var opts = $.extend({
                 content: '消息提示',
@@ -190,6 +255,7 @@
                 icon: '',
                 type: 'tip',
                 appendTo: '',
+                skin: 'dark-pormp'
             }, options);
 
             //判断type风格
@@ -225,17 +291,31 @@
                 }
             });
         },
-        //select选择框
+
+        /**
+         * [select选择框]
+         * @param  {[selector]}    [绑定选择器]
+         * @return {[opts]}
+         */
+        
         select2: function(options) {
             var opts = $.extend({
-                selector: '.select-control'
+                selector: '.select-control',
+                minimumResultsForSearch: 12
             }, options);
 
             require(['select'], function() {
                 $(opts.selector).select2(opts);
             })
         },
-        //城市联动
+
+        /**
+         * [表单验证]
+         * @param  {[selector]}    [绑定选择器]
+         * @param  {[changeReset]} [需要手动刷新的选择器]
+         * @return {[opts]}
+         */
+        
         formValid: function(options) {
             var opts = $.extend({
                 selector: '.select-form',
@@ -253,30 +333,46 @@
             }, options);
 
             require(['validate'], function() {
-                $(opts.changeReset).change(function() {
+                $(opts.selector).find(opts.changeReset).change(function() {
                     $(this).valid();
                 });
 
                 $(opts.selector).validate(opts);
             });
         },
-        //城市联动
+
+        /**
+         * [城市联动]
+         * @param  {[selector]}    [绑定选择器]
+         * @param  {[select2]}     [使用select2风格]
+         * @return {[opts]}
+         */
+        
         city: function(options) {
             var opts = $.extend({
                 selector: '.distpicker',
-                minimumResultsForSearch: 10
+                minimumResultsForSearch: 10,
+                select2: false
             }, options);
 
             require(['city'], function() {
                 $(opts.selector).distpicker(opts);
-                $(opts.selector + '> select').select2(opts);
-
-                if ($('[data-toggle="distpicker"] > select').length > 0) {
-                    $('[data-toggle="distpicker"] > select').select2(opts);
+                if (opts.select2) {
+                    $(opts.selector + '> select').select2(opts);
+                    if ($('[data-toggle="distpicker"] > select').length > 0) {
+                        $('[data-toggle="distpicker"] > select').select2(opts);
+                    }
                 }
             })
         },
-        // 富文本
+ 
+        /**
+         * [富文本]
+         * @param  {[selector]}    [绑定选择器]
+         * @param  {[svgPath]}     [图标路径]
+         * @return {[opts]}
+         */
+        
         editor: function(options) {
             var opts = $.extend({
                 selector: '#editor',
@@ -322,7 +418,13 @@
                 $(opts.selector).trumbowyg(opts);
             })
         },
-        //获取get参数值
+
+        /**
+         * [获取url]
+         * @method  {[get(key)]}    [获取url上的参数]
+         * @return {[value]}
+         */
+        
         get: function(par) {
             //获取当前URL
             var local_url = document.location.href;
@@ -340,7 +442,13 @@
             }
             return get_par;
         },
-        //替换get参数
+
+        /**
+         * [替换get参数]
+         * @method  {[getReplace(key, name)]}    [替换指定参数的值]
+         * @return {[string]}
+         */
+
         getReplace: function(paramName, replaceWith) {
             var oUrl = location.href.toString();
             if (oUrl.indexOf(paramName) >= 0) {
@@ -350,7 +458,13 @@
                 return oUrl + '&' + paramName + '=' + replaceWith;
             }
         },
-        //常用正则验证
+
+        /**
+         * [常用正则验证]
+         * @method  {[reg(string)]}    [验证]
+         * @return {[string]}
+         */
+        
         reg: function(type, val) {
             switch (type) {
                 case 'email':
@@ -365,6 +479,14 @@
                     return /^(\d{15}|\d{18})$/.test(val);
             }
         },
+        
+        /**
+         * [input格式化]
+         * @param  {[selector]}    [绑定选择器]
+         * @param  {[type]}        [格式化默认风格]
+         * @return {[opts]}
+         */
+        
         inputFormat: function(options) {
             var typeOpts;
             var opts = $.extend({
@@ -407,6 +529,16 @@
                 var cleave = new Cleave(opts.selector, typeOpts);
             })
         },
+
+        /**
+         * [拖动滑块验证]
+         * @param  {[selector]}           [绑定选择器]
+         * @param  {[labelTip]}           [提示语]
+         * @param  {[successLabelTip]}    [成功提示语]
+         * @param  {[duration]}           [区间宽度]
+         * @return {[opts]}
+         */
+        
         dragValid: function(options) {
             var opts = $.extend({
                 selector: '.slideunlock-slider',
@@ -427,6 +559,14 @@
                 slider.init();
             });
         },
+
+        /**
+         * [placeholder提示语]
+         * @param  {[selector]}           [绑定选择器]
+         * @param  {[submitSelector]}     [提交按钮(解决input:password无效的bug)]
+         * @return {[opts]}
+         */
+        
         placeholder: function(options) {
             var opts = $.extend({
                 selector: 'input, textarea',
@@ -450,6 +590,13 @@
                 })
             }
         },
+
+        /**
+         * [字母排序]
+         * @param  {[selector]}    [绑定选择器]
+         * @return {[opts]}
+         */
+        
         listSort: function(options){
             var opts = $.extend({
                 selector: '.list-sort',
@@ -465,6 +612,15 @@
                 $(opts.selector).listnav(opts);
             });
         },
+
+        /**
+         * [局部打印]
+         * @param  {[selector]}      [绑定选择器]
+         * @param  {[printDom]}      [局部打印的DOM]
+         * @param  {[importCSS]}     [引用打印前页面的样式]
+         * @return {[opts]}
+         */
+        
         print: function(options){
             var opts = $.extend({
                 selector: '',
@@ -485,6 +641,13 @@
                 }
             });
         },
+
+        /**
+         * [商城列表选项]
+         * @param  {[selector]}      [绑定选择器]
+         * @return {[opts]}
+         */
+        
         searchList: function(options){
             var opts = $.extend({
                 selector: '.selectNumberScreen'
@@ -494,6 +657,13 @@
                 $(opts.selector).selectedList(opts);
             });
         },
+
+        /**
+         * [鼠标hover显示内容]
+         * @param  {[selector]}      [绑定选择器]
+         * @return {[opts]}
+         */
+        
         hoverExplain: function(options){
             var opts = $.extend({
                 selector: '.order-pirce'
@@ -503,6 +673,14 @@
                 $(opts.selector).hoverPop(opts);
             });
         },
+
+        /**
+         * [全选、取消全选]
+         * @param  {[itemBoxClass]}      [需要全选的容器]
+         * @param  {[checkAllClass]}     [全选按钮选择器]
+         * @return {[opts]}
+         */
+        
         checkAll: function(options){
             var opts = $.extend({
                 itemBoxClass: '.check-items',
